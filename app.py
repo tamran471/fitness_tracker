@@ -8,11 +8,12 @@ app.secret_key = 'your_secret_key'  # For flash messages
 # Database connection function
 def create_connection():
     try:
-        connection = mysql.connector.connect(
-            host='localhost',
-            user='root',
-            password='Tamran@471',
-            database='fitness_tracker'
+         connection = mysql.connector.connect(
+            host=os.environ.get("DB_HOST"),
+            user=os.environ.get("DB_USER"),
+            password=os.environ.get("DB_PASS"),
+            database=os.environ.get("DB_NAME"),
+            port=int(os.environ.get("DB_PORT", 3306))
         )
         return connection
     except mysql.connector.Error as err:
