@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Activities</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://media.istockphoto.com/id/1437851885/photo/weight-training-equipment-in-a-modern-gym.webp?a=1&b=1&s=612x612&w=0&k=20&c=M6mqTBp9I191B5I9YUjr0Pfg3lBLd5rWPbQL9i9gs98=') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            color: white;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #319795;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #319795;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #2c7a7b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Activities</h1>
+    <table>
+        <tr>
+            <th>Activity Name</th>
+            <th>Duration (minutes)</th>
+            <th>Calories Burned</th>
+        </tr>
+        {% for activity in activities %}
+        <tr>
+            <td>{{ activity[1] }}</td>
+            <td>{{ activity[2] }}</td>
+            <td>{{ activity[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/user/dashboard">Back to Dashboard</a>
+</body>
+</html>

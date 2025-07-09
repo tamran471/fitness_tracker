@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3ltJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 24px;
+            margin-top: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 30px;
+            background-color: #319795;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #2c7a7b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Progress</h1>
+    <p>Total Calories Burned: {{ total_calories }}</p>
+    <p>Total Calories Consumed: {{ total_meal_calories }}</p>
+    <p><strong>Net Calories (Burned - Consumed):</strong> {{ net_calories }}</p>
+    <a href="/user/dashboard">Back to Dashboard</a>
+</body>
+
+</html>
