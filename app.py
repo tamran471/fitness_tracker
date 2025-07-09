@@ -34,7 +34,7 @@ def user_signup():
         password = request.form['password']
 
         # Check if user already exists
-        connection = create_connection()
+        connection = get_db_connection()
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
         existing_user = cursor.fetchone()
@@ -60,7 +60,7 @@ def user_login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        connection = create_connection()
+        connection = get_db_connection()
         cursor = connection.cursor()
         cursor.execute('SELECT * FROM users WHERE email = %s', (email,))
         user = cursor.fetchone()
@@ -93,7 +93,7 @@ def add_activity():
             user_id = session['user_id']
 
             # Add activity to the database
-            connection = create_connection()
+            connection = get_db_connection()
             cursor = connection.cursor()
             cursor.execute("INSERT INTO activities (user_id, activity_name, duration, calories_burned) VALUES (%s, %s, %s, %s)",
                            (user_id, activity_name, duration, calories_burned))
@@ -112,7 +112,7 @@ def add_activity():
 def view_activities():
     if 'user_id' in session:
         user_id = session['user_id']
-        connection = create_connection()
+        connection = get_db_connection()
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM activities WHERE user_id = %s", (user_id,))
         activities = cursor.fetchall()
@@ -125,7 +125,7 @@ def view_activities():
 def view_progress():
     if 'user_id' in session:
         user_id = session['user_id']
-        connection = create_connection()
+        connection = get_db_connection()
         cursor = connection.cursor()
 
         # Burned
@@ -156,7 +156,7 @@ def add_meal():
             calories_consumed = request.form['calories_consumed']
             user_id = session['user_id']
 
-            connection = create_connection()
+            connection = get_db_connection()
             cursor = connection.cursor()
             cursor.execute("INSERT INTO meals (user_id, meal_name, calories_consumed) VALUES (%s, %s, %s)",
                            (user_id, meal_name, calories_consumed))
@@ -174,7 +174,7 @@ def add_meal():
 def view_meals():
     if 'user_id' in session:
         user_id = session['user_id']
-        connection = create_connection()
+        connection = get_db_connection()
         cursor = connection.cursor()
         
         # Get all meals for the logged-in user
