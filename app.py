@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import mysql.connector
 import uuid
-
+import os
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # For flash messages
 
-# Database connection function
-def create_connection():
+# Database connection functio
+
+def get_db_connection():
     try:
-         connection = mysql.connector.connect(
+        connection = mysql.connector.connect(
             host=os.environ.get("DB_HOST"),
             user=os.environ.get("DB_USER"),
             password=os.environ.get("DB_PASS"),
@@ -17,8 +18,9 @@ def create_connection():
         )
         return connection
     except mysql.connector.Error as err:
-        print(f"Error: {err}")
+        print("Error:", err)
         return None
+
 
 @app.route('/')
 def home():
